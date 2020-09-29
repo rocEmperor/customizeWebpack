@@ -30,7 +30,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 use: [
                     { loader: 'babel-loader' }, // 'babel-loader' is also a legal name to reference
-                    { 
+                    { // 自定义loader，执行在babel-loader之前，可以对js资源按需做一些处理
                         loader: 'mine-loader',
                         options: {
                             value: '我是自定义loader传入的参数'
@@ -65,7 +65,9 @@ module.exports = {
             template: './index.html',
             filename: 'index.html'
         }),
+        // 动态向bundle.js内插入js脚本
         new NotePlugin({ name: 'Note' }),
+        // 一定自定义的HtmlWebpackPlugin
         new NewHtmlPlugin({
             template: path.resolve(__dirname, '../index.html'),
             filename: 'newIndex.html'

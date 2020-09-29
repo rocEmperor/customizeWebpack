@@ -1,1 +1,1 @@
-console.log(new Date().getTime())
+console.log('date.js输出：', new Date().toLocaleDateString())
